@@ -23,7 +23,7 @@ echo "Creating Namespace $namespace"
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
-kubectl create namespace $namespace
+oc create namespace $namespace
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
@@ -33,7 +33,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-./oc apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0-pre4/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
+oc apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0-pre4/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -43,7 +43,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-./oc apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0-pre4/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
+oc apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0-pre4/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -53,7 +53,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-./oc get routes -n openshift-console | grep console.openshift-console.apps | awk '{print $2}' | sed 's/console-openshift-console//g' | while read HOST;do 
+oc get routes -n openshift-console | grep console.openshift-console.apps | awk '{print $2}' | sed 's/console-openshift-console//g' | while read HOST;do 
 echo -e "
 apiVersion: entando.org/v1
 kind: EntandoApp
@@ -66,7 +66,7 @@ spec:
   dbms: embedded
   ingressHostName: $appname$HOST
   standardServerImage: eap
-  replicas: 1" | ./oc apply -f -; done
+  replicas: 1" | oc apply -f -; done
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
@@ -74,7 +74,7 @@ echo ""
 echo "Namespace $namespace is created and $appname application is deploying"
 echo "Wait around 10 minutes, when application is deployed it is available at:"
 echo ""
-./oc get routes -n openshift-console | grep console.openshift-console.apps | awk '{print $2}' | sed 's/console-openshift-console//g' | while read HOST;do 
+oc get routes -n openshift-console | grep console.openshift-console.apps | awk '{print $2}' | sed 's/console-openshift-console//g' | while read HOST;do 
 echo "http://$appname$HOST/app-builder/";done
 echo ""
 echo "##################################################################################"
