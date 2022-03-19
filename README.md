@@ -13,4 +13,4 @@ es:
 
 curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando_oc_install.sh" && chmod +x ./entando_oc_install.sh && ./entando_oc_install.sh entando quickstart
 
-That script creates a namespace called "entando" and the appname named quickstart
+That script creates a namespace called "entando" and an appname named "quickstart"
