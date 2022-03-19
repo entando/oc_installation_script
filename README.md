@@ -1,4 +1,4 @@
-# oc_installation_script
+# Automated Entando Install for demo purpose
 Automated script to Deploy Entando on Openshift4
 
 # Requirement
