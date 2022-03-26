@@ -2,7 +2,7 @@
 #  Author
 #  Sergio Molino
 #
-#  This script install Entando application on Openshift4
+#  This script install Entando application on EKS (AWS)
 #
 namespace=$1
 appname=$2
