@@ -23,8 +23,7 @@ echo "Installing ingress"
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.5/deploy/static/provider/aws/deploy.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/aws/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.3/deploy/static/provider/aws/deploy.yaml
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
