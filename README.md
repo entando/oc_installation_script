@@ -25,10 +25,10 @@ Automated script to Deploy Entando on Kubernetes
 
 # Steps to launch the scirpt
 
-curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando_oc_install.sh" && chmod +x ./entando_oc_install.sh && ./entando_oc_install.sh $namespace $appname
+curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando_eks_install.sh" && chmod +x ./entando_eks_install.sh && ./entando_oc_install.sh $namespace $appname
 
 es:
 
-curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando_oc_install.sh" && chmod +x ./entando_oc_install.sh && ./entando_oc_install.sh entando quickstart
+curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando_eks_install.sh" && chmod +x ./entando_eks_install.sh && ./entando_oc_install.sh entando quickstart
 
 That script creates a namespace called "entando" and an appname named "quickstart"
