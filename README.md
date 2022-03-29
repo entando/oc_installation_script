@@ -15,7 +15,8 @@ curl -sLO  "https://github.com/entando/oc_installation_script/raw/master/entando
 
 That script creates a namespace called "entando" and an appname named "quickstart"
 
-###########################################################################################################
+######################################################################################
+######################################################################################
 
 # Automated script to Deploy Entando on Kubernetes
 
