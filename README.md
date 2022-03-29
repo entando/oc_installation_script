@@ -17,7 +17,7 @@ That script creates a namespace called "entando" and an appname named "quickstar
 
 ###########################################################################################################
 
-Automated script to Deploy Entando on Kubernetes
+# Automated script to Deploy Entando on Kubernetes
 
 # Requirement
 - kubectl installed
