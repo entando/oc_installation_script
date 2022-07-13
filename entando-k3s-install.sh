@@ -78,4 +78,4 @@ spec:
   dbms: embedded
   ingressHostName: $HOST.nip.io
   standardServerImage: eap
-  replicas: 1" | sudo kubectl apply -f -; done
+  replicas: 1" | kubectl apply -f -; done
