@@ -86,7 +86,7 @@ echo ""
 echo "Namespace $namespace is created and $appname application is deploying"
 echo "Wait around 10 minutes, when application is deployed it is available at:"
 echo ""
-kubectl get svc -n ingress-nginx | grep LoadBalancer | awk '{print $4}' |while read HOST;do
+kubectl get svc -A | grep LoadBalancer | awk '{print $4}' |while read HOST;do
 echo "http://$HOST.nip.io/app-builder/";done
 echo ""
 echo "##################################################################################"
