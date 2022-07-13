@@ -76,6 +76,6 @@ spec:
   environmentVariables: []
   entandoAppVersion: '7.0'
   dbms: embedded
-  ingressHostName: $HOST
+  ingressHostName: $HOST.nip.io
   standardServerImage: eap
   replicas: 1" | sudo kubectl apply -f -; done
