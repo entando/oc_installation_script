@@ -65,7 +65,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 sleep 10
-kubectl get svc -A | grep LoadBalancer | awk '{print $4}' | while read HOST;do
+kubectl get svc -A | grep LoadBalancer | awk '{print $5}' | while read HOST;do
 echo -e "
 apiVersion: entando.org/v1
 kind: EntandoApp
@@ -86,7 +86,7 @@ echo ""
 echo "Namespace $namespace is created and $appname application is deploying"
 echo "Wait around 10 minutes, when application is deployed it is available at:"
 echo ""
-kubectl get svc -A | grep LoadBalancer | awk '{print $4}' |while read HOST;do
+kubectl get svc -A | grep LoadBalancer | awk '{print $5}' |while read HOST;do
 echo "http://$HOST.nip.io/app-builder/";done
 echo ""
 echo "##################################################################################"
