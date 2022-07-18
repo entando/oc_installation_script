@@ -12,6 +12,6 @@ echo "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 echo "- To list cluster: k3d cluster list"
 echo "- To stop cluster: k3d cluster stop <cluster-name>"
 echo "- To start cluster: k3d cluster start <cluster-name>"
-echo "- To delete cluster: k3d cluster delete <cluster-name>
+echo "- To delete cluster: k3d cluster delete <cluster-name>"
 echo "- To check entando status: kubectl get pods -n entando"
 echo "- To get entando ingress: kubectl get ingress -n entando"
