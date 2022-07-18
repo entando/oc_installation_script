@@ -46,5 +46,5 @@ helm install rancher rancher-latest/rancher \
 kubectl -n cattle-system rollout status deploy/rancher
 kubectl -n cattle-system get all,ing
 date
-
+curl -sfL https://raw.githubusercontent.com/entando/oc_installation_script/master/entando-k3s-install.sh > installation_script.sh && chmod +x installation_script.sh && ./installation_script.sh entando quickstart
 echo https://rancher.localhost/dashboard/?setup=$(kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{.data.bootstrapPassword|base64decode}}')
