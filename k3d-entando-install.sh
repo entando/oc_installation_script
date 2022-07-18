@@ -8,7 +8,7 @@ curl -sfL https://raw.githubusercontent.com/entando/oc_installation_script/maste
 echo ""
 echo ""
 echo "Short Manual"
-echo "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+echo "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
 echo "- To list cluster: k3d cluster list"
 echo "- To stop cluster: k3d cluster stop <cluster-name>"
 echo "- To start cluster: k3d cluster start <cluster-name>"
