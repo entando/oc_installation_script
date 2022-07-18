@@ -9,7 +9,7 @@ brew install helm k3d kubectl
 k3d cluster create k3d-rancher \
     --api-port 6550 \
     --servers 1 \
-    --image rancher/k3s:v1.20.10-k3s1 \
+    --image rancher/k3s:v1.21.9-k3s1 \
     --port 443:443@loadbalancer \
     --wait --verbose
 k3d cluster list
