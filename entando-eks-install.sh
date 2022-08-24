@@ -51,6 +51,7 @@ metadata:
   name: entando-operator-config
   namespace: entando
 data:
+  entando.ingress.class: 'nginx'"
   entando.requires.filesystem.group.override: 'true'" | kubectl apply -f -
 
 
@@ -63,7 +64,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.0/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -73,7 +74,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
+kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.0/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
