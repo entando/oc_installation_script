@@ -74,7 +74,7 @@ metadata:
   name: $appname
 spec:
   environmentVariables: []
-  entandoAppVersion: '7.0'
+#  entandoAppVersion: '7.0'
   dbms: embedded
   ingressHostName: $HOST.nip.io
   standardServerImage: eap
