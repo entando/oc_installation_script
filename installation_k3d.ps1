@@ -22,8 +22,8 @@ echo "##########################################################################
 kubectl apply -n entando -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.1/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
 
 sleep 10
-kubectl get svc -A | grep LoadBalancer | awk '{print $5}' | while read HOST;do
-echo -e "
+
+echo "
 apiVersion: entando.org/v1
 kind: EntandoApp
 metadata:
@@ -32,15 +32,6 @@ metadata:
 spec:
   environmentVariables: []
   dbms: embedded
-  ingressHostName: $HOST.nip.io
+  ingressHostName: 172.21.0.3.nip.io
   standardServerImage: eap
-  replicas: 1" | kubectl apply -f -; done
-  echo ""
-echo "##################################################################################"
-echo "##################################################################################"
-echo ""
-echo "Namespace $namespace is created and $appname application is deploying"
-echo "Wait around 10 minutes, when application is deployed it is available at:"
-echo ""
-kubectl get svc -A | grep LoadBalancer | awk '{print $5}' |while read HOST;do
-echo "http://$HOST.nip.io/app-builder/";done
+  replicas: 1" | kubectl apply -f -
