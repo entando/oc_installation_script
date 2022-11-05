@@ -26,6 +26,16 @@ echo "##########################################################################
 echo "##################################################################################"
 kubectl create namespace $namespace
 
+echo -e "
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: entando-operator-config
+  namespace: $namespace
+data:
+  entando.pod.completion.timeout.seconds: "1200"
+  entando.pod.readiness.timeout.seconds: "1200"
+  entando.ingress.class: 'nginx'" | kubectl apply -f -
 
 echo ""
 echo "##################################################################################"
