@@ -85,7 +85,7 @@ spec:
   environmentVariables: []
 #  entandoAppVersion: '7.0'
   dbms: embedded
-  ingressHostName: quickstart.$HOST.nip.io
+  ingressHostName: localhost
   standardServerImage: eap
   replicas: 1" | kubectl apply -f -; done
   echo ""
