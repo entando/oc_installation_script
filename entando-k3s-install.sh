@@ -33,9 +33,8 @@ metadata:
   name: entando-operator-config
   namespace: $namespace
 data:
-  entando.pod.completion.timeout.seconds: "1200"
-  entando.pod.readiness.timeout.seconds: "1200"
-  entando.ingress.class: 'nginx'" | kubectl apply -f -
+  entando.pod.completion.timeout.seconds: '1200'
+  entando.pod.readiness.timeout.seconds: '1200'" | kubectl apply -f -
 
 echo ""
 echo "##################################################################################"
@@ -55,7 +54,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.1/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -65,7 +64,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.0.0/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
+kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.1/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -86,7 +85,7 @@ spec:
   environmentVariables: []
 #  entandoAppVersion: '7.0'
   dbms: embedded
-  ingressHostName: $HOST.nip.io
+  ingressHostName: host.docker.internal
   standardServerImage: eap
   replicas: 1" | kubectl apply -f -; done
   echo ""
