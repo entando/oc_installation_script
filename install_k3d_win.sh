@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 k3d cluster create entando-quickstart --image="rancher/k3s:v1.21.9-k3s1"
 kubectl cluster-info
