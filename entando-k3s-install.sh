@@ -85,7 +85,7 @@ spec:
   environmentVariables: []
 #  entandoAppVersion: '7.0'
   dbms: embedded
-  ingressHostName: kubernetes.docker.internal
+  ingressHostName: quickstart.$HOST.nip.io
   standardServerImage: eap
   replicas: 1" | kubectl apply -f -; done
   echo ""
@@ -96,7 +96,7 @@ echo "Namespace $namespace is created and $appname application is deploying"
 echo "Wait around 10 minutes, when application is deployed it is available at:"
 echo ""
 kubectl get svc -A | grep LoadBalancer | awk '{print $5}' |while read HOST;do
-echo "http://kubernetes.docker.internal/app-builder/";done
+echo "http://quickstart.$HOST.nip.io/app-builder/";done
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
