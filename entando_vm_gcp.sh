@@ -92,6 +92,6 @@ metadata:
 spec:
   environmentVariables: []
   dbms: embedded
-  ingressHostName: quickstart.{{ inventory_hostname }}.nip.io
+  ingressHostName: quickstart.{{ ansible_host }}.nip.io
   standardServerImage: wildfly
   replicas: 1" | kubectl apply -f -; done
