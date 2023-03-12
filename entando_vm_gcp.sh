@@ -23,7 +23,7 @@ echo "Installing ingress"
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/aws/deploy.yaml
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.5-rc2/deploy/static/provider/aws/deploy.yaml
 echo ""
 echo "##################################################################################"
 echo "##################################################################################"
@@ -62,7 +62,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.3/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.5-rc2/manifests/k8s-116-and-later/namespace-scoped-deployment/cluster-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
@@ -72,7 +72,7 @@ echo ""
 echo "##################################################################################"
 echo "##################################################################################"
 
-kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.3/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
+kubectl apply -n $namespace -f https://raw.githubusercontent.com/entando-k8s/entando-k8s-operator-bundle/v7.1.5-rc2/manifests/k8s-116-and-later/namespace-scoped-deployment/namespace-resources.yaml
 
 echo "##################################################################################"
 echo "##################################################################################"
