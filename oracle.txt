@@ -1,0 +1,117 @@
+Create secrets
+
+kubectl create secret generic oracle-secret --from-literal username=oracleuser --from-literal password=myP4ssw0rd -n {{ namespace }}
+kubectl create secret generic {{ appname }}-portdb-secret --from-literal username=oracleport --from-literal password=myP4ssw0rd -n {{ namespace }}
+kubectl create secret generic {{ appname }}-servdb-secret --from-literal username=oracleserv --from-literal password=myP4ssw0rd -n {{ namespace }}
+kubectl create secret generic {{ appname }}-dedb-secret --from-literal username=oracleecr --from-literal password=myP4ssw0rd -n {{ namespace }}
+
+
+Create Entando Keycloak server resource
+
+apiVersion: entando.org/v1
+kind: EntandoKeycloakServer
+metadata:
+  name: default-sso-in-namespace
+  namespace: {{ namespace }}
+  labels:
+    entando.org/capability: Sso
+    entando.org/capability-provision-scope: Namespace
+spec:
+  dbms: none
+  environmentVariables:
+    - name: DB_VENDOR
+      value: oracle
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: default-sso-in-namespace-db-secret
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: default-sso-in-namespace-db-secret
+    - name: DB_DATABASE
+      value: {{ dbname }}
+    - name: DB_ADDR
+      value: {{ set here the db url }}
+    - name: DB_PORT
+      value: '1521'
+  ingressHostName: {{ set here the FQDN where the keycloak will be reachable }}
+  provisioningStrategy: DeployDirectly
+  replicas: 1
+  standardImage: keycloak"
+
+
+Create Entando database service
+
+apiVersion: entando.org/v1
+kind: EntandoDatabaseService
+metadata:
+  namespace: {{ namespace }}
+  name: {{ appname }}-database-service
+spec:
+  port: 1521
+  dbms: oracle
+  host: {{ set here the db url }}
+  databaseName: {{ dbname }}
+  providedCapabilityScope: Namespace
+  provisioningStrategy: UseExternal
+  secretName: oracle-secret
+
+Create Entando App
+
+apiVersion: entando.org/v1
+kind: EntandoApp
+metadata:
+ name: {{ appname }}
+spec:
+  dbms: none
+  environmentVariables:
+  - name: PORTDB_URL
+    value: 'jdbc:oracle:thin:@//{{ set here the db url }}:1521/{{ dbname }}'
+  - name: PORTDB_USERNAME
+    valueFrom:
+      secretKeyRef:
+       key: username
+       name: {{ appname }}-portdb-secret
+  - name: PORTDB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+       key: password
+       name: {{ appname }}-portdb-secret
+  - name: PORTDB_CONNECTION_CHECKER
+    value: org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker
+  - name: PORTDB_EXCEPTION_SORTER
+    value: org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter
+  - name: SERVDB_URL
+    value: 'jdbc:oracle:thin:@//{{ set here the db url }}:1521/{{ dbname }}'
+  - name: SERVDB_USERNAME
+    valueFrom:
+      secretKeyRef:
+       key: username
+       name: {{ appname }}-servdb-secret
+  - name: SERVDB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+       key: password
+       name: {{ appname }}-servdb-secret
+  - name: SERVDB_CONNECTION_CHECKER
+    value: org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker
+  - name: SERVDB_EXCEPTION_SORTER
+    value: org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter
+  - name: SPRING_DATASOURCE_URL
+    value: 'jdbc:oracle:thin:@//{{ set here the db url }}:1521/{{ dbname }}'
+  - name: SPRING_DATASOURCE_USERNAME
+    valueFrom:
+      secretKeyRef:
+       key: username
+       name: {{ appname }}-dedb-secret
+  - name: SPRING_DATASOURCE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+       key: password
+       name: {{ appname }}-dedb-secret
+  ingressHostName: {{ set here the FQDN where the keycloak will be reachable }}
+  standardServerImage: wildfly
+  replicas: 1
