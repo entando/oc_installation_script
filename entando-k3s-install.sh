@@ -33,6 +33,8 @@ metadata:
   name: entando-operator-config
   namespace: $namespace
 data:
+  entando.requires.filesystem.group.override: "true"
+  entando.k8s.operator.impose.limits: "true"
   entando.pod.completion.timeout.seconds: '1200'
   entando.pod.readiness.timeout.seconds: '1200'" | kubectl apply -f -
 
@@ -86,7 +88,7 @@ spec:
 #  entandoAppVersion: '7.0'
   dbms: embedded
   ingressHostName: quickstart.$HOST.nip.io
-  standardServerImage: eap
+  standardServerImage: tomcat
   replicas: 1" | kubectl apply -f -; done
   echo ""
 echo "##################################################################################"
