@@ -37,38 +37,44 @@ spec:
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: mem-min-max-container
-  namespace: tenant1
+  name: default-limits
+  namespace: tenant1  # Change to your namespace
 spec:
   limits:
-  - max:
-      memory: 1Gi
-    min:
-      memory: 500Mi
+  - default:
+      cpu: "500m"   # Default CPU limit (0.5 vCPU)
+      memory: "256Mi"  # Default Memory limit
+    defaultRequest:
+      cpu: "250m"  # Default CPU request (0.25 vCPU)
+      memory: "128Mi" # Default Memory request
     type: Container
 ---
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: mem-min-max-container
-  namespace: tenant2
+  name: default-limits
+  namespace: tenant2  # Change to your namespace
 spec:
   limits:
-  - max:
-      memory: 1Gi
-    min:
-      memory: 500Mi
+  - default:
+      cpu: "500m"   # Default CPU limit (0.5 vCPU)
+      memory: "256Mi"  # Default Memory limit
+    defaultRequest:
+      cpu: "250m"  # Default CPU request (0.25 vCPU)
+      memory: "128Mi" # Default Memory request
     type: Container
 ---
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: mem-min-max-container
-  namespace: tenant3
+  name: default-limits
+  namespace: tenant3  # Change to your namespace
 spec:
   limits:
-  - max:
-      memory: 1Gi
-    min:
-      memory: 500Mi
+  - default:
+      cpu: "500m"   # Default CPU limit (0.5 vCPU)
+      memory: "256Mi"  # Default Memory limit
+    defaultRequest:
+      cpu: "250m"  # Default CPU request (0.25 vCPU)
+      memory: "128Mi" # Default Memory request
     type: Container
